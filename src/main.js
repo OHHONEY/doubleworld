@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import root from './root.vue';
+import root from './App.vue';
 import router from './router';
 
 new Vue({
