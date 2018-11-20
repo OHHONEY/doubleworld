@@ -1,1 +1,2 @@
-# doubleworld
+#构建
+npm run build
