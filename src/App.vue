@@ -21,3 +21,9 @@ export default {
   }
 };
 </script>
+
+<style lang="less">
+p {
+  color: chocolate;
+}
+</style>
