@@ -1,11 +1,12 @@
 <template>
-    <p>HELLO THERE IS OHHONEY'PAGE</p>
+    <div class="boyfriend">
+    </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
-  }
+    data() {
+        return {};
+    }
 };
 </script>
