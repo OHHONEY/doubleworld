@@ -1,10 +1,15 @@
 <template>
 	<div class="app_root">
-		<router-view></router-view>
         <!-- 背景（底色 和 圆）-->
         <canvas id="app_canvas"></canvas> 
         <!-- 背景上的浮动的星星  在小范围内移动-->
         <canvas id="stars_canvas"></canvas>
+        <!-- 当前日期 -->
+        <div class="content">
+            <h1>{{new Date().getDate()}}</h1>
+            <h2>{{new Date().getFullYear() + '年' + Number(new Date().getMonth() + 1) + '月'}}</h2>
+            <router-view></router-view>
+        </div>
 	</div>
 </template>
 
@@ -134,13 +139,13 @@
             this.draw_background();
             this.draw_starts();
             this.animate();
-            
+            this.$router.push('/home');
 		}
 	};
 
 </script>
 
-<style lang="less">
+ <style lang="less" scoped>
     @font-face {
 		font-family: "louisvillepoet";
 		src: url("./asset/font/louisvillepoet-regular.ttf");
@@ -161,13 +166,30 @@
             position: absolute;
             left: 0;
             top: 0;
-            z-index: 1;
         }
         #stars_canvas {
             position: absolute;
             left: 0;
             top: 0;
-            z-index: 2;
+        }
+        .content { 
+            width: 100%;
+            height: 100%;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: rgba(0, 0, 0, 0);
+            h1 {
+                float: right;
+                margin-right: 80px;
+                font-size: 64px;
+            }
+            h2 {
+                clear: both;
+                float: right;
+                margin-right: 80px;
+                font-size: 28px;
+                margin-bottom: 28px;
+            }
         }
 	}
 

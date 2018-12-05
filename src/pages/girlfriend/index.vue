@@ -104,7 +104,7 @@ export default {
 
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @font-face {
   font-family: "Glamor";
   src: url("../../asset/font/Glamor-Regular.ttf") format("ttf");
