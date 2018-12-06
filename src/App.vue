@@ -6,7 +6,10 @@
         <canvas id="stars_canvas"></canvas>
         <!-- 当前日期 -->
         <div class="content">
-            <h1>{{new Date().getDate()}}</h1>
+            <transition name="bounce" appear-active-class="animated fadeInLeft delay-3s" 
+                enter-active-class="animated fadeInLeft">
+                <h1 v-show="ifanimate">{{new Date().getDate()}}</h1>
+            </transition>
             <h2>{{new Date().getFullYear() + '年' + Number(new Date().getMonth() + 1) + '月'}}</h2>
             <router-view></router-view>
         </div>
@@ -17,6 +20,7 @@
 	export default {
 		data() {
 			return {
+                ifanimate: false,
                 app_canvas: {},
                 stars_canvas: {},
                 context: {},
@@ -131,6 +135,17 @@
                 }
 
                 requestAnimationFrame(this.animate);
+            },
+            // 事件代理
+            eventAgent() {
+                let fatherElement = document.getElementById('stars_canvas');
+                fatherElement.addEventListener('click', (event)=>{
+                    let e = event || window.event;
+                    let targetElement = e.target || e.srcElement; // e.srcElement: IE的目标事件
+                    if (targetElement) {
+                        alert(targetElement)
+                    }
+                },false)
             }
             
 		},
@@ -140,6 +155,10 @@
             this.draw_starts();
             this.animate();
             this.$router.push('/home');
+            this.eventAgent();
+            setTimeout(() => {
+                this.ifanimate = true
+            },1000)
 		}
 	};
 
