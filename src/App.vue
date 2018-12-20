@@ -3,7 +3,7 @@
         <!-- 背景（底色 和 圆）-->
         <canvas id="app_canvas"></canvas> 
         <!-- 背景上的浮动的星星  在小范围内移动-->
-        <canvas id="stars_canvas"></canvas>
+        <!-- <canvas id="stars_canvas"></canvas> -->
         <!-- 当前日期 -->
         <div class="content">
             <transition name="bounce" appear-active-class="animated fadeInLeft delay-3s" 
@@ -55,7 +55,7 @@
             },
             initCanvas() {
                 this.app_canvas = document.querySelector('#app_canvas');
-                this.stars_canvas = document.querySelector('#stars_canvas');
+                // this.stars_canvas = document.querySelector('#stars_canvas');
             },
             draw_background() {
                 let app_canvas = this.app_canvas;
@@ -152,10 +152,10 @@
 		mounted() {
             this.initCanvas();
             this.draw_background();
-            this.draw_starts();
-            this.animate();
+            // this.draw_starts();
+            // this.animate();
             this.$router.push('/home');
-            this.eventAgent();
+            // this.eventAgent();
             setTimeout(() => {
                 this.ifanimate = true
             },1000)
@@ -181,19 +181,21 @@
 			font-family: "louisvillepoet";
 			font-size: 24px;
         }
-        #app_canvas {
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        #stars_canvas {
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
+        // #app_canvas {
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        // }
+        // #stars_canvas {
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        // }
         .content { 
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
             margin: 40px auto;
             padding: 0 20px;
             background: rgba(0, 0, 0, 0);

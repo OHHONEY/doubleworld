@@ -28,7 +28,7 @@ module.exports = {
 	module: {
 		rules: [{
 			test: /\.vue$/,
-			loader: 'vue-loader'
+            loader: 'vue-loader',
 		}, {
 			test: /\.(less|css)$/,
 			use: [
@@ -37,7 +37,7 @@ module.exports = {
 				'less-loader'
 			]
 		}, {
-			test: /\.(png|svg|jpg|gif)$/,
+			test: /\.(png|svg|jpg|gif|mp4|mp3)$/,
 			use: [
 				'file-loader'
 			]

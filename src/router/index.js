@@ -3,14 +3,17 @@ import Router from 'vue-router'
 import homepage from '../pages/homepage/home.vue'
 import boyfriend from '../pages/boyfriend/index.vue'
 import girlfriend from '../pages/girlfriend/index.vue'
+import movies from '../pages/other/movie.vue'
 
 Vue.use(Router);
 
-export const asyncRoute = [{
+export const asyncRoute = [
+    {
     path: '/home',
     component: homepage,
     hidden: true
-},{
+    },
+    {
         path: '/boyfriend',
         component: boyfriend,
         hidden: true
@@ -18,6 +21,11 @@ export const asyncRoute = [{
     {
         path: '/girlfriend',
         component: girlfriend,
+        hidden: true
+    },
+    {
+        path: '/girlfriend/movies',
+        component: movies,
         hidden: true
     }
 ]
