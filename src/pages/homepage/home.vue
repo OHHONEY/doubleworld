@@ -2,17 +2,10 @@
 	<div class="home" id="home-events">
 		<!-- 大事记 -->
 		<transition-group name='events' tag="p">
-			<div v-for="(user, i) in usersInfo" :key="i" class="event">
-				<!-- <h3>{{user.title}}</h3>
-                <p>{{user.content}}</p> -->
-				<p>{{user.name}}</p>
-				<p>{{user.birthday}}</p>
-				<p>
-					<span>最喜欢看的电影:</span>
-					<span v-for="(movie, index) in user.movies" :key="index">
-						{{movie}}
-					</span>
-				</p>
+			<div v-for="(mine, i) in mines" :key="i" class="event">
+                <img :src="mine.icon">
+				<h3>{{mine.theme}}</h3>
+				<p>{{mine.content}}</p>
 			</div>
 		</transition-group>
 	</div>
@@ -23,7 +16,12 @@
 		data() {
 			return {
 				usersInfo: [],
-				events: []
+                events: [],
+                mines: [
+                    {theme: 'Love & Heart', content: '', icon: require('../../asset/imgs/moon.png')},
+                    {theme: `I'm a programmer`, content: '', icon: require('../../asset/imgs/movie.png')},
+                    {theme: 'beauty', content: '', icon: require('../../asset/imgs/art.png')}
+                ]
 			}
 		},
 		methods: {
@@ -33,7 +31,8 @@
 					birthday: '1995-06-23',
 					movies: ['哈尔的移动城堡', '千与千寻'], //电影title作为一个链接 跳转到电影的视屏剪辑页
 					musics: ['Forever At Your Feet(rain)'] //便签点击可以播放 
-				}
+                }
+                
 				this.usersInfo.splice(0, 0, mainUser);
 			},
 			addEvent() {
@@ -85,15 +84,23 @@
 		border-radius: 24px;
 
 		.event {
-			background: rgba(255, 255, 255, 0.8);
+			background: rgba(239, 222, 222, 0.2);
 			font-size: 16px;
 			margin: 40px 0;
 			padding: 6px 10px;
 			border-radius: 8px;
-
+            text-align: center;
 			p {
 				padding: 10px;
-			}
+            }
+            img {
+                height: 50px;
+                width: auto;
+            }
+            h3 {
+                display: inline-block;
+                transform: translateY(-17px);
+            }
 		}
 
 		.events-enter-active {

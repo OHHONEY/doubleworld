@@ -4,6 +4,10 @@
         <canvas id="app_canvas"></canvas> 
         <!-- 背景上的浮动的星星  在小范围内移动-->
         <!-- <canvas id="stars_canvas"></canvas> -->
+        <!-- 导航 -->
+        <ul>
+           <li v-for="(item, i) in navs" :key="i" class="nav_item">{{item}}</li> 
+        </ul>
         <!-- 当前日期 -->
         <div class="content">
             <!-- <transition name="bounce" appear-active-class="animated fadeInLeft delay-3s" 
@@ -22,6 +26,7 @@ import pointerClock from './component/pointerClock/pointerClock.vue'
 	export default {
 		data() {
 			return {
+                navs: ['首页', 'love&heart', 'programmar', 'beauty', 'introduce'],
                 ifanimate: false,
                 app_canvas: {},
                 stars_canvas: {},
@@ -67,7 +72,7 @@ import pointerClock from './component/pointerClock/pointerClock.vue'
                 let context = this.app_canvas.getContext('2d');
 
                 app_canvas.width = document.documentElement.clientWidth;
-                app_canvas.height = document.documentElement.clientHeight;
+                app_canvas.height = 270;
 
                 // 画背景圆 (顶部半圆)
                 context.fillStyle = 'rgba(0,112,174,0.3)';
@@ -186,16 +191,33 @@ import pointerClock from './component/pointerClock/pointerClock.vue'
 			font-family: "louisvillepoet";
 			font-size: 24px;
         }
-        // #app_canvas {
-        //     position: absolute;
-        //     left: 0;
-        //     top: 0;
-        // }
-        // #stars_canvas {
-        //     position: absolute;
-        //     left: 0;
-        //     top: 0;
-        // }
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 36px;
+            line-height: 36px;
+            list-style: none;
+            margin: 4px 26px;
+            padding-left: 16px;
+            .nav_item {
+                display: inline-block;
+                font-size: 14px;
+                margin-left: 24px;
+            }
+        }
+        ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('./asset/imgs/star.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 36px;
+            width: 36px;
+        }
+
         .content { 
             position: absolute;
             top: 0;
