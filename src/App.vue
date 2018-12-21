@@ -6,10 +6,11 @@
         <!-- <canvas id="stars_canvas"></canvas> -->
         <!-- 当前日期 -->
         <div class="content">
-            <transition name="bounce" appear-active-class="animated fadeInLeft delay-3s" 
+            <!-- <transition name="bounce" appear-active-class="animated fadeInLeft delay-3s" 
                 enter-active-class="animated fadeInLeft">
                 <h1 v-show="ifanimate">{{new Date().getDate()}}</h1>
-            </transition>
+            </transition> -->
+            <pointer-clock/>
             <h2>{{new Date().getFullYear() + '年' + Number(new Date().getMonth() + 1) + '月'}}</h2>
             <router-view></router-view>
         </div>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import pointerClock from './component/pointerClock/pointerClock.vue'
 	export default {
 		data() {
 			return {
@@ -39,7 +41,10 @@
                 ], // 3个特定颜色的圆
                 stars: [] // 页面星星属性 记录位置信息
 			};
-		},
+        },
+        components: {
+            pointerClock
+        },
 		methods: {
 			toHoney() {
 				// nowpage 1: hu'page 2: ohhoney'page
