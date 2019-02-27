@@ -2,9 +2,14 @@
 	<!-- 此文件在h5页面绘制指针时钟  -->
 	<!-- 指针时钟有时针、分针和秒针 长度固定  分针和秒针等长 分针和时针等宽 秒针较细-->
 	<div id="pointer-clock">
-		<canvas id="clock-canvas" width="200" height="200" style="float: right; margin-right: 35px">
+		<canvas id="clock-canvas" width="200" height="200">
 			<!-- 先绘制静态表盘 绘制静态时针（根据系统时间） -->
 		</canvas>
+        <div class="introduction">
+            <p>my name: ohhoney</p>
+            <p>my phone: 15800825296</p>
+            <p>my address: 临汾路135弄3号楼</p>
+        </div>
 	</div>
 </template>
 
@@ -144,8 +149,17 @@
 </script>
 
 <style lang="less" scoped>
-.clock-canvas {
-    float: right;
-    margin-right: 35px;
+#pointer-clock {
+    position: relative;
+}
+.introduction {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(0) translateY(-50%);
+    p {
+        font-size: 12px;
+        margin: 4px 0; //利用BFC
+    }
 }
 </style>
