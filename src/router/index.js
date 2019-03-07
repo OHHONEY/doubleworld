@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import homepage from '../pages/homepage/home.vue'
 import boyfriend from '../pages/boyfriend/index.vue'
 import girlfriend from '../pages/girlfriend/index.vue'
-import movies from '../pages/other/movie.vue'
+
 
 Vue.use(Router);
 
@@ -23,11 +23,6 @@ export const asyncRoute = [
         component: girlfriend,
         hidden: true
     },
-    {
-        path: '/girlfriend/movies',
-        component: movies,
-        hidden: true
-    }
 ]
 
 export default new Router({

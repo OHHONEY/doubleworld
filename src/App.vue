@@ -5,27 +5,21 @@
 				<canvas id="app_canvas"></canvas>
 			</div>
 			<ul>
-				<li v-for="(item, i) in navs" :key="i" class="nav_item">{{item}}</li>
+				<li v-for="(item, i) in navs" :key="i" class="nav_item" @click="goOther(item)">{{item}}</li>
 			</ul>
-			<pointer-clock />
 		</header>
-        <div class="router-view-box">
-            <router-view></router-view>
-        </div>
+		<div class="router-view-box">
+			<router-view></router-view>
+		</div>
 
-		<!-- <transition name="bounce" appear-active-class="animated fadeInLeft delay-3s" 
-                enter-active-class="animated fadeInLeft">
-                <h1 v-show="ifanimate">{{new Date().getDate()}}</h1>
-            </transition> -->
 	</div>
 </template>
 
 <script>
-	import pointerClock from './component/pointerClock/pointerClock.vue'
 	export default {
 		data() {
 			return {
-				navs: ['首页', 'love&heart', 'programmar', 'beauty', 'introduce'],
+				navs: ['homepage', 'girlfriend', 'beauty', 'introduce'],
 				ifanimate: false,
 				app_canvas: {},
 				stars_canvas: {},
@@ -49,21 +43,20 @@
 			pointerClock
 		},
 		methods: {
-			toHoney() {
-				// nowpage 1: hu'page 2: ohhoney'page
-				if (this.nowpage) {
-					this.nowpage = 0
-					this.describe = 'ohhoney'
-					this.$router.push('/girlfriend')
-					return
-				}
-				this.nowpage = 1
-				this.describe = 'HYX'
-				this.$router.push('/boyfriend')
-			},
+            goOther(name = 'girlfriend') {
+                switch (name) {
+                    case 'girlfriend':
+                        this.$router.push('/girlfriend')
+                        break;
+                    case 'beauty': 
+                        this.$router.push('/beauty')
+                    default:
+                        this.$router.push('/home')
+                        break;
+                }
+            },
 			initCanvas() {
 				this.app_canvas = document.querySelector('#app_canvas');
-				// this.stars_canvas = document.querySelector('#stars_canvas');
 			},
 			draw_background() {
 				let app_canvas = this.app_canvas;
@@ -78,19 +71,6 @@
 				context.arc(300, -68, 168, 0, Math.PI * 2, true);
 				context.closePath();
 				context.fill();
-
-				// 画随机半径圆 （20 - 100）
-				// this.round.map(item => {
-				// 	item.R = Math.random() * 100;
-				// 	item.R = item.R < 20 ? 20 : item.R; //圆的随机半径 (20-100)
-				// 	item.X = Math.random() * app_canvas.width;
-				// 	item.Y = Math.random() * app_canvas.height;
-				// 	context.fillStyle = item.color;
-				// 	context.beginPath();
-				// 	context.arc(item.X, item.Y, item.R, 0, Math.PI * 2, true);
-				// 	context.closePath();
-				// 	context.fill();
-				// });
 
 			},
 			draw_starts() {
@@ -161,7 +141,6 @@
 			this.initCanvas();
 			this.draw_background();
 			this.$router.push('/home');
-			// this.eventAgent();
 			setTimeout(() => {
 				this.ifanimate = true
 			}, 1000)
@@ -171,10 +150,7 @@
 </script>
 
 <style lang="less" scoped>
-	@font-face {
-		font-family: "louisvillepoet";
-		src: url("./asset/font/louisvillepoet-regular.ttf");
-	}
+@import './asset/css/font.less';
 
 	p {
 		font-family: 'louisvillepoet';
@@ -192,53 +168,27 @@
 		.canvas_background_box {
 			position: absolute;
 			top: 0;
-			left: 0;
+            left: 0;
+            z-index: -1;
 		}
 
 		ul {
-            list-style: none;
-            z-index: 1;
+			list-style: none;
+			z-index: 1;
 
 			.nav_item {
 				display: inline-block;
 				padding: 8px 0px;
 				vertical-align: middle;
 				font-size: 16px;
-                margin-right: 24px;
-                &:last-child {
-                    margin-right: 0;
-                    // 最后一个li之后没有其他li, parents盒子已经设置了左右内边距
-                }
-            }
-            
-		}
-	}
+				margin-right: 24px;
 
+				&:last-child {
+					margin-right: 0;
+					// 最后一个li之后没有其他li, parents盒子已经设置了左右内边距
+				}
+			}
 
-
-
-
-	.content {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		margin: 40px auto;
-		padding: 0 20px;
-		background: rgba(0, 0, 0, 0);
-
-		h1 {
-			float: right;
-			margin-right: 80px;
-			font-size: 64px;
-		}
-
-		h2 {
-			clear: both;
-			float: right;
-			margin-right: 80px;
-			font-size: 28px;
-			margin-bottom: 28px;
 		}
 	}
 

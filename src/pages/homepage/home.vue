@@ -3,7 +3,7 @@
 	<div class="home">
 		<!-- 个人工作经历 -->
 		<!-- 层叠的盒子 -->
-
+		<pointer-clock />
 		<div class="flex_box">
 			<div class="work_experience_card" @click.prevent="front($event)" style="{background-color: 'rgb(154, 125, 91)'}">
 				<h2>前端开发工程师</h2>
@@ -13,25 +13,27 @@
 			<div class="work_experience_card" @click.prevent="front($event)" style="{background-color: 'rgb(191,155,222)'}">
 				<h2>前端开发工程师</h2>
 				<!-- time -->
-				<p>2017.07-2018.06</p>
-			</div>
-			<div class="work_experience_card" @click.prevent="front($event)" style="{background-color: 'rgb(157,84,86)'}">
-				<h2>前端开发工程师</h2>
-				<!-- time -->
-				<p>2017.07-2018.06</p>
+				<p>2018.07-至今</p>
 			</div>
 		</div>
-		<!-- <transition-group name='events' tag="p">
-			<div v-for="(mine, i) in mines" :key="i" class="event">
-                <img :src="mine.icon">
-				<h3>{{mine.theme}}</h3>
-				<p>{{mine.content}}</p>
+		<div class="flex_box">
+			<div class="work_experience_card" @click.prevent="front($event)" style="{background-color: 'rgb(154, 125, 91)'}">
+				<h2>趣看天下app</h2>
+				<!-- time -->
+				<p>2018.07-至今</p>
 			</div>
-		</transition-group> -->
+			<div class="work_experience_card" @click.prevent="front($event)" style="{background-color: 'rgb(191,155,222)'}">
+				<h2>后台管理系统</h2>
+				<!-- time -->
+				<p>2018.07-至今</p>
+			</div>
+		</div>
+
 	</div>
 </template>
 
 <script>
+	import pointerClock from '../../component/pointerClock/pointerClock.vue'
 	export default {
 		data() {
 			return {
@@ -55,65 +57,25 @@
 				]
 			}
 		},
+		components: {
+			pointerClock
+		},
 		methods: {
-			initUser() {
-				let mainUser = {
-					name: 'ohhoney',
-					birthday: '1995-06-23',
-					movies: ['哈尔的移动城堡', '千与千寻'], //电影title作为一个链接 跳转到电影的视屏剪辑页
-					musics: ['Forever At Your Feet(rain)'] //便签点击可以播放 
-				}
-
-				this.usersInfo.splice(0, 0, mainUser);
-			},
-			addEvent() {
-				let event = {
-					title: '起风了',
-					show: false,
-					content: ''
-				}
-				this.events.splice(1, 0, event);
-			},
-			go() {
-				alert('movie.vue')
-				this.$router.push('/girlfriend/movies');
-			},
-			// 点击歌曲标签 播放歌曲 并且阻止父节点触发事件
-			playMusic() {
-				console.log(document)
-			},
 			front(event) {
 				// alert(event.target.name)
 				console.log(event.target.style);
-                event.target.style.width = '50%';
-                event.target.style.zIndex = 1;
+				event.target.style.width = '50%';
+				event.target.style.zIndex = 1;
 
 			}
 		},
-		mounted() {
-			this.initUser()
-			let animal = setInterval(() => {
-				let event = {
-					title: '起风了',
-					show: false,
-					content: ''
-				}
-				this.events.push(event);
-				if (this.events.length == 10) {
-					console.log(this.events.length);
-					clearInterval(animal);
-				}
-			}, 3000);
-		}
+		mounted() {}
 	}
 
 </script>
 
 <style lang="less" scoped>
-	@font-face {
-		font-family: "louisvillepoet";
-		src: url("../../asset/font/louisvillepoet-regular.ttf");
-	}
+	@import '../../asset/css/font.less';
 
 	.home {
 
@@ -151,9 +113,11 @@
 	}
 
 	.flex_box {
+		margin: 24px 0;
 		padding: 0 40px;
 		display: flex;
 		flex-direction: row;
+
 	}
 
 	.work_experience_card {
@@ -161,10 +125,13 @@
 		flex-grow: 1;
 		flex-shrink: 0;
 		height: 150px;
-		// width: 30%;
-		// background-color: rgba(154, 125, 91);
 		border-radius: 24px;
 		box-shadow: 3px 3px 10px rgba(154, 125, 91, 0.5);
+
+		h2 {
+			text-align: center;
+			font-family: Glamor;
+		}
 	}
 
 </style>
