@@ -1,15 +1,13 @@
 <template>
 	<div class="app_root">
 		<header>
-			<div class="canvas_background_box">
-				<canvas id="app_canvas"></canvas>
-			</div>
 			<ul>
 				<li v-for="(item, i) in navs" :key="i" class="nav_item" @click="goOther(item)">{{item}}</li>
 			</ul>
 		</header>
 		<div class="router-view-box">
 			<router-view></router-view>
+
 		</div>
 
 	</div>
@@ -39,22 +37,20 @@
 				stars: [] // 页面星星属性 记录位置信息
 			};
 		},
-		components: {
-			pointerClock
-		},
 		methods: {
-            goOther(name = 'girlfriend') {
-                switch (name) {
-                    case 'girlfriend':
-                        this.$router.push('/girlfriend')
-                        break;
-                    case 'beauty': 
-                        this.$router.push('/beauty')
-                    default:
-                        this.$router.push('/home')
-                        break;
-                }
-            },
+			goOther(name = 'girlfriend') {
+				switch (name) {
+					case 'girlfriend':
+						this.$router.push('/girlfriend')
+						break;
+					case 'beauty':
+						this.$router.push('/beauty')
+						break;
+					default:
+						this.$router.push('/home')
+						break;
+				}
+			},
 			initCanvas() {
 				this.app_canvas = document.querySelector('#app_canvas');
 			},
@@ -141,16 +137,13 @@
 			this.initCanvas();
 			this.draw_background();
 			this.$router.push('/home');
-			setTimeout(() => {
-				this.ifanimate = true
-			}, 1000)
 		}
 	};
 
 </script>
 
 <style lang="less" scoped>
-@import './asset/css/font.less';
+	@import './asset/css/font.less';
 
 	p {
 		font-family: 'louisvillepoet';
@@ -168,8 +161,8 @@
 		.canvas_background_box {
 			position: absolute;
 			top: 0;
-            left: 0;
-            z-index: -1;
+			left: 0;
+			z-index: -1;
 		}
 
 		ul {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import homepage from '../pages/homepage/home.vue'
-import boyfriend from '../pages/boyfriend/index.vue'
+import beauty from '../pages/beauty/beauty.vue'
 import girlfriend from '../pages/girlfriend/index.vue'
 
 
@@ -14,8 +14,8 @@ export const asyncRoute = [
     hidden: true
     },
     {
-        path: '/boyfriend',
-        component: boyfriend,
+        path: '/beauty',
+        component: beauty,
         hidden: true
     },
     {

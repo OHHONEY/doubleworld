@@ -1,65 +1,97 @@
 <template>
 	<div class="beauty">
-		<!-- when i am not working,I love my life  -->
-		<!-- <transition-group name='events' tag="p">
-			<div v-for="(mine, i) in mines" :key="i" class="event">
-                <img :src="mine.icon">
-				<h3>{{mine.theme}}</h3>
-				<p>{{mine.content}}</p>
-			</div>
-		</transition-group> -->
+		<div class="bottomTab">
+			<ul>
+				<li v-for="(item, i) in tab" :key="i">{{item}}
+					<span>0</span>
+				</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
 <script>
 	export default {
-		methods: {
-			initUser() {
-				let mainUser = {
-					name: 'ohhoney',
-					birthday: '1995-06-23',
-					movies: ['哈尔的移动城堡', '千与千寻'], //电影title作为一个链接 跳转到电影的视屏剪辑页
-					musics: ['Forever At Your Feet(rain)'] //便签点击可以播放 
-				}
-
-				this.usersInfo.splice(0, 0, mainUser);
-			},
-			addEvent() {
-				let event = {
-					title: '起风了',
-					show: false,
-					content: ''
-				}
-				this.events.splice(1, 0, event);
-			},
-			go() {
-				alert('movie.vue')
-				this.$router.push('/girlfriend/movies');
-			},
-			// 点击歌曲标签 播放歌曲 并且阻止父节点触发事件
-			playMusic() {
-				console.log(document)
-			},
+		data() {
+			return {
+				tab: ['首页', '动态', '购物车', '我的商城', ]
+			}
 		},
-		mounted() {
-			this.initUser()
-			let animal = setInterval(() => {
-				let event = {
-					title: '起风了',
-					show: true,
-					content: ''
-				}
-				this.events.push(event);
-				if (this.events.length == 10) {
-					console.log(this.events.length);
-					clearInterval(animal);
-				}
-			}, 3000);
-		}
+		methods: {},
+		mounted() {}
 	}
 
 </script>
 
 <style lang="less" scoped>
+	// 默认网页 有背景
+	@media screen and (min-width: 376px) {
+		.beauty {
+			position: relative;
+			width: 200px;
+			margin: 0 auto;
+			min-height: 394px;
+			background-image: url('./asset/background.png');
+			background-size: 200px auto;
+
+		}
+	}
+
+	@media screen and (max-width: 375px) {
+		.beauty {
+			width: 100%;
+			height: 100vh;
+			position: fixed;
+			left: 0;
+			top: 0;
+
+			li {
+				font-size: 16px;
+
+				span {
+					display: none;
+				}
+
+				&:nth-child(3) {
+					span {
+						display: inline-block;
+                        transform: translateX(-8px) translateY(-4px);
+                        font-size: 12px;
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 50%;
+						color: aliceblue;
+						background-color: red;
+					}
+				}
+			}
+		}
+	}
+
+	.beauty {
+		z-index: -1;
+	}
+
+	.bottomTab {
+		position: absolute;
+		left: 20px;
+		right: 20px;
+		bottom: 20px;
+
+		ul {
+			width: 100%;
+			display: flex;
+
+			li {
+				text-align: center;
+				flex-grow: 1;
+
+				span {
+					display: none;
+				}
+			}
+		}
+
+	}
 
 </style>

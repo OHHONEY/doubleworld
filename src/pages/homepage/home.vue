@@ -67,7 +67,13 @@
 				event.target.style.width = '50%';
 				event.target.style.zIndex = 1;
 
-			}
+            },
+            add() {
+                this.$store.commit('addPrice', 20);
+            },
+            tip() {
+                console.log(this.$store.getters.betterProducts)
+            }
 		},
 		mounted() {}
 	}
